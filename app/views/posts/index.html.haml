@@ -1,0 +1,15 @@
+.container
+  .well
+    = link_to "New Post", new_post_path, remote: true, class: "btn btn-primary"
+  .new-post
+  %table.table.table-bordered.table-striped
+    %thead
+      %tr
+        %th Title
+        %th Body
+        %td  
+        %td  
+    %tbody.post-index
+      = render "index"
+#post-modal.modal.fade
+

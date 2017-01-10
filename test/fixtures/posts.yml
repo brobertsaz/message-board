@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  author: MyString
+  body: MyText
+  has_many: MyString
+  : 
+  belongs_to: MyString
+  : 
+
+two:
+  title: MyString
+  author: MyString
+  body: MyText
+  has_many: MyString
+  : 
+  belongs_to: MyString
+  : 
