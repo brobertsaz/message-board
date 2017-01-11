@@ -1,13 +1,17 @@
-%h1
-  = @post.title
-%h3
-  = @post.body
-%ul
-  - @post.comments.order(:created_at).each do |cmt|
-    %li= cmt.content
+.col-lg-8.col-lg-offset-2
+  %h1
+    = @post.title
+  %h3
+    = @post.body
+  %ul
+    - @post.comments.order(:created_at).each do |comment|
+      %li= comment.content
 
-= form_for(Comment.new, url: comments_path) do |f|
-  = f.text_field :content
-  = f.hidden_field :post_id, value: @post.id
-  = f.submit "Create", class: 'btn btn-primary'
+
+  = link_to 'Add Comment', "#", class: 'add-comment-link'
+
+  = simple_form_for(Comment.new, url: comments_path) do |f|
+    = f.input :content, as: :text, placeholder: "Enter your comment", label: false
+    = f.hidden_field :post_id, value: @post.id
+    = f.button :submit, "Create", class: 'btn btn-primary'
 

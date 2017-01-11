@@ -35,6 +35,7 @@ gem 'devise'
 gem "haml-rails", "~> 0.9"
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'autoprefixer-rails'
+gem 'simple_form'
 
 # tooltips and popovers depend on tether
 source 'https://rails-assets.org' do

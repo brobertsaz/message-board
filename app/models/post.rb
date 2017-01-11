@@ -1,7 +1,7 @@
 class Post < ActiveRecord::Base
 
-  belongs_to :author, class_name: "User"
+  belongs_to :user
   has_many :comments
 
-  validates_presence_of :title, :body, :author
+  validates_presence_of :title, :body
 end
