@@ -9,8 +9,31 @@
       %a.navbar-brand{:href => "/"} MessageBoard
     #navbar.navbar-collapse.collapse
       %ul.nav.navbar-nav.navbar-right
-        %li
-          = link_to 'Sign Up', new_user_registration_path
-        %li
-          = link_to 'Sign In', new_user_session_path
+        - if current_user
+          %li
+            = link_to 'Sign Out', destroy_user_session_path, method: :delete
+        - else
+          %li
+            = link_to 'Sign Up', new_user_registration_path
+          %li
+            = link_to 'Sign In', "#", data: {toggle: "modal", target: "#loginModal"}
 
+
+#loginModal.modal
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{"data-dismiss" => "modal", :type => "button"} x
+        %h3 Login to Bad Ass Message Board
+      .modal-body
+        %form{:action => "", :method => "post", :name => "login_form"}
+          %p
+            %input#email.span3{:name => "eid", :placeholder => "Email", :type => "text"}/
+          %p
+            %input.span3{:name => "passwd", :placeholder => "Password", :type => "password"}/
+          %p
+            %button.btn.btn-primary{:type => "submit"} Sign in
+            %a{:href => "#"} Forgot Password?
+      .modal-footer
+        Need to Register?
+        %a.btn.btn-primary{:href => "#"} Register
