@@ -1,4 +1,4 @@
-- @posts.order(created: :desc).each do |post|
+- @posts.order(created_at: :desc).each do |post|
   %tr
     %td
       = link_to post.title, post_path(post)
