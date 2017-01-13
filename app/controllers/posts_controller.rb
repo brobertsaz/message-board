@@ -13,7 +13,6 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.create post_params
-    @post.update author_id: current_user.id
     if @post.save
       flash[:success] = "Successfully created new post"
       redirect_to action: :index
@@ -30,7 +29,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :body)
+    params.require(:post).permit(:title, :body, :user_id)
   end
 
 end

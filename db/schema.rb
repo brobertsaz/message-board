@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170111023939) do
+ActiveRecord::Schema.define(version: 20170113042342) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,14 +21,13 @@ ActiveRecord::Schema.define(version: 20170111023939) do
     t.string   "content"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   create_table "posts", force: :cascade do |t|
     t.string  "title"
-    t.string  "author"
     t.text    "body"
-    t.integer "author_id"
-    t.string  "belongs_to"
+    t.integer "user_id"
   end
 
   create_table "users", force: :cascade do |t|

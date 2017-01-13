@@ -4,7 +4,7 @@ describe Post do
   context "Validations" do
     it { is_expected.to validate_presence_of(:title) }
     it { is_expected.to validate_presence_of(:body) }
-    it { is_expected.to validate_presence_of(:author) }
+    it { is_expected.to validate_presence_of(:user_id) }
   end
 
   context "Associations" do

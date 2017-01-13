@@ -4,9 +4,15 @@
 
 
 #new_comment {
-  display: none
+  display: none;
 }
 
 .add-comment-link {
-  float: right
+  float: right;
+}
+
+.comment-name {
+  float: right;
+  clear: both;
+  padding-right: 15px;
 }

@@ -24,16 +24,18 @@
     .modal-content
       .modal-header
         %button.close{"data-dismiss" => "modal", :type => "button"} x
-        %h3 Login to Bad Ass Message Board
+        %h3 Login to Message Board
       .modal-body
-        %form{:action => "", :method => "post", :name => "login_form"}
-          %p
-            %input#email.span3{:name => "eid", :placeholder => "Email", :type => "text"}/
-          %p
-            %input.span3{:name => "passwd", :placeholder => "Password", :type => "password"}/
-          %p
-            %button.btn.btn-primary{:type => "submit"} Sign in
-            %a{:href => "#"} Forgot Password?
+        = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+          = f.input :email, as: :email, required: true, autofocus: true
+          = f.input :password, as: :password, autocomplete: 'off'
+          - if devise_mapping.rememberable?
+            = f.input :remember_me, as: :boolean
+          .actions
+            = f.button :submit, "Log in", class: 'btn btn-default'
       .modal-footer
         Need to Register?
-        %a.btn.btn-primary{:href => "#"} Register
+        = link_to 'Register', new_user_registration_path, class: 'btn btn-primary'
+        .row.forgot-pw
+          - if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations'
+            = link_to "Forgot your password?", new_password_path(resource_name)

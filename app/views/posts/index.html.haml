@@ -1,13 +1,19 @@
 .container
   .well
-    = link_to "New Post", new_post_path, remote: true, class: "btn btn-primary"
+    - if current_user
+      = link_to "New Post", new_post_path, remote: true, class: "btn btn-primary"
+    - else
+      %p
+        Feel free to browse our messages, but you will not be able to post unless you sign in.
+      %p
+        Don't worry, it is free to register and use the board.
   .new-post
   %table.table.table-bordered.table-striped
     %thead
       %tr
         %th Title
-        %th Body
-        %td Actions  
+        %th Message Content
+        %td Author  
     %tbody.post-index
       = render "index"
 

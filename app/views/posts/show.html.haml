@@ -3,15 +3,25 @@
     = @post.title
   %h3
     = @post.body
-  %ul
+  %p
+    written by
+    = @post.user.full_name
+
+  %br
+  %ul{style: "padding:0px;"}
     - @post.comments.order(:created_at).each do |comment|
-      %li= comment.content
+      %li.bordered
+        = comment.content
+        .row.comment-name
+          by
+          = comment.user.full_name
+      %br
 
-
-  = link_to 'Add Comment', "#", class: 'add-comment-link'
+  = link_to 'Add Comment', "#", class: 'add-comment-link' if current_user
 
   = simple_form_for(Comment.new, url: comments_path) do |f|
     = f.input :content, as: :text, placeholder: "Enter your comment", label: false
     = f.hidden_field :post_id, value: @post.id
+    = f.hidden_field :user_id, value: current_user.id if current_user
     = f.button :submit, "Create", class: 'btn btn-primary'
 

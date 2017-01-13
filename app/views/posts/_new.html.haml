@@ -7,6 +7,7 @@
         %ul.errors
         = f.input :title, required: true
         = f.input :body, as: :text, label: 'Post content'
+        = f.input :user_id, as: :hidden, input_html: { value: current_user.id }
       .modal-footer
         = f.submit class: "btn btn-primary"
         = link_to "Cancel", "#", class: "btn", data: {dismiss: "modal"}
